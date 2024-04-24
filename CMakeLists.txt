@@ -18,8 +18,10 @@ file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.hpp")
 add_executable(dummyplayer ${SRC_FILES})
 
 # compile
-add_definitions(-DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1)
-target_compile_options(dummyplayer -Wall -Werror -std=c++17 -g -O3)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_BUILD_TYPE Release)
+target_compile_options(dummyplayer PUBLIC -Wall -Werror -g)
 
 # link
 target_link_libraries(
@@ -27,4 +29,5 @@ target_link_libraries(
     ${PROTOBUF_LIBRARIES}
 )
 
+# output
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/build/bin)
