@@ -97,6 +97,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_info_2eproto::offsets[] PROTOB
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::dummyPlayer::Player, id_),
+  PROTOBUF_FIELD_OFFSET(::dummyPlayer::Player, name_),
   PROTOBUF_FIELD_OFFSET(::dummyPlayer::Player, money_),
   PROTOBUF_FIELD_OFFSET(::dummyPlayer::Player, items_),
 };
@@ -114,10 +115,10 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_info_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\ninfo.proto\022\013dummyPlayer\"\023\n\005Users\022\n\n\002id"
-  "\030\001 \003(\t\"\200\001\n\006Player\022\n\n\002id\030\001 \001(\t\022\r\n\005money\030\002"
-  " \001(\005\022-\n\005items\030\003 \003(\0132\036.dummyPlayer.Player"
-  ".ItemsEntry\032,\n\nItemsEntry\022\013\n\003key\030\001 \001(\005\022\r"
-  "\n\005value\030\002 \001(\005:\0028\001b\006proto3"
+  "\030\001 \003(\t\"\216\001\n\006Player\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 "
+  "\001(\t\022\r\n\005money\030\003 \001(\005\022-\n\005items\030\004 \003(\0132\036.dumm"
+  "yPlayer.Player.ItemsEntry\032,\n\nItemsEntry\022"
+  "\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_info_2eproto_deps[1] = {
 };
@@ -128,7 +129,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_inf
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_info_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_info_2eproto = {
-  false, false, descriptor_table_protodef_info_2eproto, "info.proto", 185,
+  false, false, descriptor_table_protodef_info_2eproto, "info.proto", 199,
   &descriptor_table_info_2eproto_once, descriptor_table_info_2eproto_sccs, descriptor_table_info_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_info_2eproto::offsets,
   file_level_metadata_info_2eproto, 3, file_level_enum_descriptors_info_2eproto, file_level_service_descriptors_info_2eproto,
@@ -387,6 +388,11 @@ Player::Player(const Player& from)
     id_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_id(),
       GetArena());
   }
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_name().empty()) {
+    name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_name(),
+      GetArena());
+  }
   money_ = from.money_;
   // @@protoc_insertion_point(copy_constructor:dummyPlayer.Player)
 }
@@ -394,6 +400,7 @@ Player::Player(const Player& from)
 void Player::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Player_info_2eproto.base);
   id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   money_ = 0;
 }
 
@@ -406,6 +413,7 @@ Player::~Player() {
 void Player::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
   id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void Player::ArenaDtor(void* object) {
@@ -431,6 +439,7 @@ void Player::Clear() {
 
   items_.Clear();
   id_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   money_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -452,23 +461,32 @@ const char* Player::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 money = 2;
+      // string name = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_name();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "dummyPlayer.Player.name"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 money = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           money_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // map<int32, int32> items = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+      // map<int32, int32> items = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(&items_, ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -509,13 +527,23 @@ failure:
         1, this->_internal_id(), target);
   }
 
-  // int32 money = 2;
-  if (this->money() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_money(), target);
+  // string name = 2;
+  if (this->name().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "dummyPlayer.Player.name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_name(), target);
   }
 
-  // map<int32, int32> items = 3;
+  // int32 money = 3;
+  if (this->money() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_money(), target);
+  }
+
+  // map<int32, int32> items = 4;
   if (!this->_internal_items().empty()) {
     typedef ::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::int32 >::const_pointer
         ConstPtr;
@@ -535,13 +563,13 @@ failure:
       }
       ::std::sort(&items[0], &items[static_cast<ptrdiff_t>(n)], Less());
       for (size_type i = 0; i < n; i++) {
-        target = Player_ItemsEntry_DoNotUse::Funcs::InternalSerialize(3, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
+        target = Player_ItemsEntry_DoNotUse::Funcs::InternalSerialize(4, items[static_cast<ptrdiff_t>(i)].second->first, items[static_cast<ptrdiff_t>(i)].second->second, target, stream);
       }
     } else {
       for (::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::int32 >::const_iterator
           it = this->_internal_items().begin();
           it != this->_internal_items().end(); ++it) {
-        target = Player_ItemsEntry_DoNotUse::Funcs::InternalSerialize(3, it->first, it->second, target, stream);
+        target = Player_ItemsEntry_DoNotUse::Funcs::InternalSerialize(4, it->first, it->second, target, stream);
       }
     }
   }
@@ -562,7 +590,7 @@ size_t Player::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // map<int32, int32> items = 3;
+  // map<int32, int32> items = 4;
   total_size += 1 *
       ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_items_size());
   for (::PROTOBUF_NAMESPACE_ID::Map< ::PROTOBUF_NAMESPACE_ID::int32, ::PROTOBUF_NAMESPACE_ID::int32 >::const_iterator
@@ -578,7 +606,14 @@ size_t Player::ByteSizeLong() const {
         this->_internal_id());
   }
 
-  // int32 money = 2;
+  // string name = 2;
+  if (this->name().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+  }
+
+  // int32 money = 3;
   if (this->money() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
@@ -620,6 +655,9 @@ void Player::MergeFrom(const Player& from) {
   if (from.id().size() > 0) {
     _internal_set_id(from._internal_id());
   }
+  if (from.name().size() > 0) {
+    _internal_set_name(from._internal_name());
+  }
   if (from.money() != 0) {
     _internal_set_money(from._internal_money());
   }
@@ -648,6 +686,7 @@ void Player::InternalSwap(Player* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   items_.Swap(&other->items_);
   id_.Swap(&other->id_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  name_.Swap(&other->name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(money_, other->money_);
 }
 

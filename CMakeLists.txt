@@ -8,20 +8,26 @@ find_package(Protobuf REQUIRED)
 
 # include files
 include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/proto
     ${PROTOBUF_INCLUDE_DIRS}
 )
 
 # source files
 set(SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-file(GLOB_RECURSE SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.hpp")
+file(GLOB_RECURSE SRC_FILES
+    "${SRC_DIR}/*/*.c*"
+    "${SRC_DIR}/*.c*"
+
+    "${SRC_DIR}/*/*.h*"
+    "${SRC_DIR}/*.h*"
+)
 add_executable(dummyplayer ${SRC_FILES})
 
 # compile
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_BUILD_TYPE Release)
-target_compile_options(dummyplayer PUBLIC -Wall -Werror -g)
+target_compile_options(dummyplayer PUBLIC -Wall -Werror -std=c++17 -g -O0)
 
 # link
 target_link_libraries(

@@ -373,11 +373,12 @@ class Player PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kItemsFieldNumber = 3,
+    kItemsFieldNumber = 4,
     kIdFieldNumber = 1,
-    kMoneyFieldNumber = 2,
+    kNameFieldNumber = 2,
+    kMoneyFieldNumber = 3,
   };
-  // map<int32, int32> items = 3;
+  // map<int32, int32> items = 4;
   int items_size() const;
   private:
   int _internal_items_size() const;
@@ -419,7 +420,32 @@ class Player PROTOBUF_FINAL :
   std::string* _internal_mutable_id();
   public:
 
-  // int32 money = 2;
+  // string name = 2;
+  void clear_name();
+  const std::string& name() const;
+  void set_name(const std::string& value);
+  void set_name(std::string&& value);
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  std::string* mutable_name();
+  std::string* release_name();
+  void set_allocated_name(std::string* name);
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  std::string* unsafe_arena_release_name();
+  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
+  "    string fields are deprecated and will be removed in a"
+  "    future release.")
+  void unsafe_arena_set_allocated_name(
+      std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // int32 money = 3;
   void clear_money();
   ::PROTOBUF_NAMESPACE_ID::int32 money() const;
   void set_money(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -442,6 +468,7 @@ class Player PROTOBUF_FINAL :
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
       0 > items_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::int32 money_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_info_2eproto;
@@ -618,7 +645,88 @@ inline void Player::unsafe_arena_set_allocated_id(
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:dummyPlayer.Player.id)
 }
 
-// int32 money = 2;
+// string name = 2;
+inline void Player::clear_name() {
+  name_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline const std::string& Player::name() const {
+  // @@protoc_insertion_point(field_get:dummyPlayer.Player.name)
+  return _internal_name();
+}
+inline void Player::set_name(const std::string& value) {
+  _internal_set_name(value);
+  // @@protoc_insertion_point(field_set:dummyPlayer.Player.name)
+}
+inline std::string* Player::mutable_name() {
+  // @@protoc_insertion_point(field_mutable:dummyPlayer.Player.name)
+  return _internal_mutable_name();
+}
+inline const std::string& Player::_internal_name() const {
+  return name_.Get();
+}
+inline void Player::_internal_set_name(const std::string& value) {
+  
+  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+}
+inline void Player::set_name(std::string&& value) {
+  
+  name_.Set(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
+  // @@protoc_insertion_point(field_set_rvalue:dummyPlayer.Player.name)
+}
+inline void Player::set_name(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+              GetArena());
+  // @@protoc_insertion_point(field_set_char:dummyPlayer.Player.name)
+}
+inline void Player::set_name(const char* value,
+    size_t size) {
+  
+  name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+      reinterpret_cast<const char*>(value), size), GetArena());
+  // @@protoc_insertion_point(field_set_pointer:dummyPlayer.Player.name)
+}
+inline std::string* Player::_internal_mutable_name() {
+  
+  return name_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline std::string* Player::release_name() {
+  // @@protoc_insertion_point(field_release:dummyPlayer.Player.name)
+  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+}
+inline void Player::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+      GetArena());
+  // @@protoc_insertion_point(field_set_allocated:dummyPlayer.Player.name)
+}
+inline std::string* Player::unsafe_arena_release_name() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:dummyPlayer.Player.name)
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  
+  return name_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      GetArena());
+}
+inline void Player::unsafe_arena_set_allocated_name(
+    std::string* name) {
+  GOOGLE_DCHECK(GetArena() != nullptr);
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      name, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:dummyPlayer.Player.name)
+}
+
+// int32 money = 3;
 inline void Player::clear_money() {
   money_ = 0;
 }
@@ -638,7 +746,7 @@ inline void Player::set_money(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:dummyPlayer.Player.money)
 }
 
-// map<int32, int32> items = 3;
+// map<int32, int32> items = 4;
 inline int Player::_internal_items_size() const {
   return items_.size();
 }

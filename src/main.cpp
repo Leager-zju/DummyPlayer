@@ -1,5 +1,7 @@
-#include <iostream>
+#include "controller.h"
 
 int main() {
-    return 0;
+  Controller ctrl;
+  ctrl.run();
+  return 0;
 }
