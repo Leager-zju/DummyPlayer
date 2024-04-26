@@ -6,7 +6,7 @@
 
 #include "player.h"
 #include "userInfoManager.h"
-
+#include "log.h"
 class Controller {
  public:
   Controller();
@@ -35,6 +35,10 @@ class Controller {
   void logout(const std::vector<std::string>& tokens);
   void quit(const std::vector<std::string>& tokens, bool& exit);
 
+  template<class ...Args>
+  void log(Args&& ...args) { logManager_->log(__TIME__, args...); }
+
   std::unique_ptr<UserInfoManager> userInfoManager_;
   std::unique_ptr<Player> currentPlayer_;
+  std::unique_ptr<LogManager> logManager_;
 };
