@@ -103,7 +103,7 @@ void Controller::showUsers(const std::vector<std::string>& tokens) {
     throw RuntimeException("Usage: showUsers");
   }
   userInfoManager_->show();
-  LOG("show users");
+  LOG("show-users");
 }
 
 void Controller::login(const std::vector<std::string>& tokens) {
@@ -111,7 +111,7 @@ void Controller::login(const std::vector<std::string>& tokens) {
     throw RuntimeException("Usage: login <userId>");
   }
   currentPlayer_ = userInfoManager_->login(tokens[1]);
-  LOG("log in with account", tokens[1]);
+  LOG("log-in with account", tokens[1]);
 }
 
 void Controller::setName(const std::vector<std::string>& tokens) {
@@ -119,7 +119,7 @@ void Controller::setName(const std::vector<std::string>& tokens) {
     throw RuntimeException("Usage: set-name <name>");
   }
   currentPlayer_->setName(tokens[1]);
-  LOG("set name to", tokens[1]);
+  LOG("set-name to", tokens[1]);
 }
 
 void Controller::getName(const std::vector<std::string>& tokens) {
@@ -127,7 +127,7 @@ void Controller::getName(const std::vector<std::string>& tokens) {
     throw RuntimeException("Usage: get-name");
   }
   std::cout << currentPlayer_->getName() << std::endl;
-  LOG("get name", currentPlayer_->getName());
+  LOG("get-name", currentPlayer_->getName());
 }
 
 void Controller::addMoney(const std::vector<std::string>& tokens) {
@@ -138,7 +138,7 @@ void Controller::addMoney(const std::vector<std::string>& tokens) {
     throw RuntimeException("cnt must be an integer");
   }
   currentPlayer_->addMoney(std::stoi(tokens[1]));
-  LOG("add money for count", tokens[1]);
+  LOG("add-money for count", tokens[1]);
 }
 
 void Controller::getMoney(const std::vector<std::string>& tokens) {
@@ -146,7 +146,7 @@ void Controller::getMoney(const std::vector<std::string>& tokens) {
     throw RuntimeException("Usage: get-money");
   }
   std::cout << currentPlayer_->getMoney() << std::endl;
-  LOG("get money");
+  LOG("get-money");
 }
 
 void Controller::addItem(const std::vector<std::string>& tokens) {
@@ -160,7 +160,7 @@ void Controller::addItem(const std::vector<std::string>& tokens) {
     throw RuntimeException("item-cnt must be an integer");
   }
   currentPlayer_->addItem(std::stoi(tokens[1]), std::stoi(tokens[2]));
-  LOG("add item", tokens[1], "for count", tokens[2]);
+  LOG("add-item", tokens[1], "for count", tokens[2]);
 }
 
 void Controller::subItem(const std::vector<std::string>& tokens) {
@@ -174,7 +174,7 @@ void Controller::subItem(const std::vector<std::string>& tokens) {
     throw RuntimeException("item-cnt must be an integer");
   }
   currentPlayer_->subItem(std::stoi(tokens[1]), std::stoi(tokens[2]));
-  LOG("sub item", tokens[1], "for count", tokens[2]);
+  LOG("sub-item", tokens[1], "for count", tokens[2]);
 }
 
 void Controller::getItem(const std::vector<std::string>& tokens) {
@@ -185,7 +185,7 @@ void Controller::getItem(const std::vector<std::string>& tokens) {
     throw RuntimeException("item-id must be an integer");
   }
   std::cout << currentPlayer_->getItem(std::stoi(tokens[1])) << std::endl;
-  LOG("get item", tokens[1]);
+  LOG("get-item", tokens[1]);
 }
 
 void Controller::logout(const std::vector<std::string>& tokens) {
@@ -193,7 +193,7 @@ void Controller::logout(const std::vector<std::string>& tokens) {
     throw RuntimeException("Usage: logout");
   }
   currentPlayer_ = nullptr;
-  LOG("log out");
+  LOG("log-out");
 }
 
 void Controller::quit(const std::vector<std::string>& tokens, bool& exit) {
